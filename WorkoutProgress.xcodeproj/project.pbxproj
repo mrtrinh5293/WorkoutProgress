@@ -21,6 +21,8 @@
 		A077349727926B210093839E /* WorkoutFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A077349627926B210093839E /* WorkoutFilterView.swift */; };
 		A077349A27926BBA0093839E /* WorkoutHistoryTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A077349927926BBA0093839E /* WorkoutHistoryTabView.swift */; };
 		A077349D27926C9F0093839E /* SettingViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = A077349C27926C9F0093839E /* SettingViews.swift */; };
+		A07734A027948A860093839E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A077349F27948A860093839E /* SceneDelegate.swift */; };
+		A07734A227948AB60093839E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07734A127948AB60093839E /* AppDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +60,8 @@
 		A077349627926B210093839E /* WorkoutFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutFilterView.swift; sourceTree = "<group>"; };
 		A077349927926BBA0093839E /* WorkoutHistoryTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutHistoryTabView.swift; sourceTree = "<group>"; };
 		A077349C27926C9F0093839E /* SettingViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViews.swift; sourceTree = "<group>"; };
+		A077349F27948A860093839E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		A07734A127948AB60093839E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +120,7 @@
 				A05B6C5F278FA926006B478B /* Assets.xcassets */,
 				A05B6C64278FA926006B478B /* Persistence.swift */,
 				A05B6C66278FA926006B478B /* WorkoutProgress.xcdatamodeld */,
+				A077349E27948A620093839E /* SupportingFiles */,
 				A05B6C61278FA926006B478B /* Preview Content */,
 			);
 			path = WorkoutProgress;
@@ -218,6 +223,15 @@
 				A077349C27926C9F0093839E /* SettingViews.swift */,
 			);
 			path = SettingViews;
+			sourceTree = "<group>";
+		};
+		A077349E27948A620093839E /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				A077349F27948A860093839E /* SceneDelegate.swift */,
+				A07734A127948AB60093839E /* AppDelegate.swift */,
+			);
+			path = SupportingFiles;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -350,11 +364,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A07734A227948AB60093839E /* AppDelegate.swift in Sources */,
 				A05B6C68278FA926006B478B /* WorkoutProgress.xcdatamodeld in Sources */,
 				A0773490279268770093839E /* NotificationHelper.swift in Sources */,
 				A077349427926A360093839E /* AppSettings.swift in Sources */,
 				A05B6C65278FA926006B478B /* Persistence.swift in Sources */,
 				A05B6C5E278FA923006B478B /* ContentView.swift in Sources */,
+				A07734A027948A860093839E /* SceneDelegate.swift in Sources */,
 				A077349D27926C9F0093839E /* SettingViews.swift in Sources */,
 				A077349A27926BBA0093839E /* WorkoutHistoryTabView.swift in Sources */,
 				A05B6C5C278FA923006B478B /* WorkoutProgressApp.swift in Sources */,
