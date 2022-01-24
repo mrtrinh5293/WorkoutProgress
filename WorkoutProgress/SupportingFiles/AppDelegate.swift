@@ -14,7 +14,7 @@ import UserNotifications
 
 let kAppDelegate = UIApplication.shared.delegate as! AppDelegate
 
-@UIApplicationMain
+//@UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var appSettings = AppSettings()
@@ -104,21 +104,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
 
-//    /**Migrate the core data from app to shared app group*/
-//    func migrateCoreData() {
-//        let oldStoreURL = NSPersistentContainer.defaultDirectoryURL().appendingPathComponent("BodyProgress.sqlite")
-////        let newStoreURL = AppGroup.group.containerURL.appendingPathComponent("BodyProgress.sqlite")
-//
-//        let coordinator = persistentContainer.persistentStoreCoordinator
-//        if let oldStore = coordinator.persistentStore(for: oldStoreURL) {
-//            do {
-//                try coordinator.migratePersistentStore(oldStore, to: newStoreURL, options: nil, withType: NSSQLiteStoreType)
-//                appSettings.isDBLocationMigrated.toggle()
-//            } catch {
-//                print(error)
-//            }
-//        }
-//    }
+    /**Migrate the core data from app to shared app group*/
+    func migrateCoreData() {
+        let oldStoreURL = NSPersistentContainer.defaultDirectoryURL().appendingPathComponent("WorkoutProgress.sqlite")
+        let newStoreURL = AppGroup.group.containerURL.appendingPathComponent("BodyProgress.sqlite")
+
+        let coordinator = persistentContainer.persistentStoreCoordinator
+        if let oldStore = coordinator.persistentStore(for: oldStoreURL) {
+            do {
+                try coordinator.migratePersistentStore(oldStore, to: newStoreURL, options: nil, withType: NSSQLiteStoreType)
+                appSettings.idDBLocationMigrated.toggle()
+            } catch {
+                print(error)
+            }
+        }
+    }
     
     // MARK: - Custom methods
     
