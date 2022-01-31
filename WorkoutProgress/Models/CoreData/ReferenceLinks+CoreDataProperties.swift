@@ -26,6 +26,12 @@ extension ReferenceLinks {
     @NSManaged public var exercise: Exercise?
 
     var wCreatedAt: Date { createdAt ?? Date() }
+    var wUpdatedAt: Date { updatedAt ?? Date() }
+    var wId: UUID { id ?? UUID() }
+    var wBodyPart: BodyParts { BodyParts(rawValue: bodyPart ?? kDefaultValue) ?? BodyParts.others }
+    var wMetadata: Data { metadata ?? Data() }
+    var wUrl: String { url ?? "" }
+    var wExercise: Exercise { exercise ?? Exercise() }
 }
 
 extension ReferenceLinks : Identifiable {

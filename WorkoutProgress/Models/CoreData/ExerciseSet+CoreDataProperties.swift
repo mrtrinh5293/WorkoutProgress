@@ -28,6 +28,19 @@ extension ExerciseSet {
     @NSManaged public var updatedAt: Date?
     @NSManaged public var weight: Double
     @NSManaged public var exercise: Exercise?
+    
+    var wId: UUID { id ?? UUID() }
+    var wName: String { name ?? kDefaultValue }
+    var wNotes: String { notes ?? kDefaultValue }
+    var wCreatedAt: Date { createdAt ?? Date() }
+    var wUpdatedAt: Date { updatedAt ?? Date() }
+    var wDeletedAt: Date { deletedAt ?? Date() }
+    var wWeight: Double { weight }
+    var wReputation: Int16 { reputation }
+    var wStatus: Bool { status }
+    var wDuration: Int16 { duration }
+    var wIsFavourite: Bool { isFavourite }
+    var wExercise: Exercise { exercise ?? Exercise() }
 
 }
 

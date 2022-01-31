@@ -8,13 +8,42 @@
 import Foundation
 import SwiftUI
 
+enum AppThemeColours: String, CaseIterable {
+    case green = "systemGreen"
+    case red = "systemRed"
+    case orange = "systemOrange"
+    case blue = "systemBlue"
+    case yellow = "systemYellow"
+    case indigo = "systemIndigo"
+    
+    func uiColor() -> UIColor {
+        switch self {
+        case .green: return UIColor.systemGreen
+        case .red: return UIColor.systemRed
+        case .orange: return UIColor.systemOrange
+        case .blue: return UIColor.systemBlue
+        case .yellow: return UIColor.systemYellow
+        case .indigo: return UIColor.systemIndigo
+        }
+    }
+}
+
 class AppSettings: ObservableObject {
     //
     
+    
     init() {
+        self.themeColorIndex = UserDefaults.standard.value(forKey: "themeColorIndex") as? Int ?? 0
         self.selectedTabs = UserDefaults.standard.value(forKey: "selectedTab") as? Int ?? 0
         self.userName = UserDefaults.standard.value(forKey: "userName") as? String ?? "username"
         self.idDBLocationMigrated = UserDefaults.standard.value(forKey: "isDBLocationMigrated") as? Bool ?? false
+    }
+    
+    @Published var themeColorIndex: Int {
+        didSet {
+            UserDefaults.standard.set(themeColorIndex, forKey: "themeColorIndex")
+            kAppDelegate.configureAppearances(color: AppThemeColours.allCases[themeColorIndex].uiColor())
+        }
     }
     
     @Published var selectedTabs: Int {
@@ -35,4 +64,6 @@ class AppSettings: ObservableObject {
             UserDefaults.standard.set(idDBLocationMigrated, forKey: "idDBLocationMigrated")
         }
     }
+    
+    func themeColorView() -> Color { Color(AppThemeColours.allCases[themeColorIndex].uiColor()) }
 }
