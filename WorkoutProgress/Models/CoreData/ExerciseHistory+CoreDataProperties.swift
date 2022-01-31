@@ -29,8 +29,34 @@ extension ExerciseHistory {
     @NSManaged public var notes: String?
     @NSManaged public var updatedAt: Date?
     @NSManaged public var workout: WorkoutHistory?
-    @NSManaged public var references: ReferenceLinks?
-    @NSManaged public var excerciseSets: ExerciseSetHistory?
+    @NSManaged public var references: NSSet?
+    @NSManaged public var excerciseSets: NSSet?
+    
+    var wId: UUID { id ?? UUID() }
+    var wName: String { name ?? kDefaultValue }
+    var wNotes: String { notes ?? kDefaultValue }
+    var wCreatedAt: Date { createdAt ?? Date() }
+    var wUpdatedAt: Date { updatedAt ?? Date() }
+    var wDeletedAt: Date { deletedAt ?? Date() }
+    var wExpectedTotalDuration: Int16 { expectedTotalDuration }
+    var wActualTotalDuration: Int16 { actualTotalDuration }
+    var wExpectedRestDuration: Int16 { expectedResDuration }
+    var wActualRestDuration: Int16 { actualRestDuration }
+    var wIsFavourite: Bool { isFavorite }
+    var wBodyPart: BodyParts { BodyParts(rawValue: bodyPart ?? kDefaultValue) ?? BodyParts.others }
+    var wWorkout: WorkoutHistory { workout ?? WorkoutHistory() }
+    var wExerciseSets: [ExerciseSetHistory] {
+        let set = excerciseSets as? Set<ExerciseSetHistory> ?? []
+        return set.sorted {
+            $0.createdAt ?? Date() < $1.createdAt ?? Date()
+        }
+    }
+    var wReferences: [ReferenceLinks] {
+        let set = references as? Set<ReferenceLinks> ?? []
+        return set.sorted {
+            $0.createdAt ?? Date() < $1.createdAt ?? Date()
+        }
+    }
 
 }
 

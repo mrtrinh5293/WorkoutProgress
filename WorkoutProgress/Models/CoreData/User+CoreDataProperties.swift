@@ -23,6 +23,14 @@ extension User {
     @NSManaged public var id: UUID?
     @NSManaged public var lastName: String?
     @NSManaged public var mass: Double
+    
+    var wFirstName: String { firstName ?? kDefaultValue }
+    var wLastName: String { lastName ?? kDefaultValue }
+    var wDob: Date { dob ?? Date() }
+    var wGender: String { gender ?? kDefaultValue }
+    var wHeight: Double { height }
+    var wMass: Double  { mass }
+    var wId: UUID? { id ?? UUID() }
 
 }
 
