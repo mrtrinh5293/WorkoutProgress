@@ -37,6 +37,7 @@ class AppSettings: ObservableObject {
         self.selectedTabs = UserDefaults.standard.value(forKey: "selectedTab") as? Int ?? 0
         self.userName = UserDefaults.standard.value(forKey: "userName") as? String ?? "username"
         self.idDBLocationMigrated = UserDefaults.standard.value(forKey: "isDBLocationMigrated") as? Bool ?? false
+        self.isDBLocationMigrated = UserDefaults.standard.value(forKey: "isDBLocationMigrated") as? Bool ?? false
     }
     
     @Published var themeColorIndex: Int {
@@ -65,5 +66,11 @@ class AppSettings: ObservableObject {
         }
     }
     
-    func themeColorView() -> Color { Color(AppThemeColours.allCases[themeColorIndex].uiColor()) }
+    var isDBLocationMigrated: Bool {
+        didSet {
+            UserDefaults.standard.set(isDBLocationMigrated, forKey: "isDBLocationMigrated")
+        }
+    }
+    
+    func themeColorView() -> Color { Color(AppThemeColours.allCases[1].uiColor()) }
 }

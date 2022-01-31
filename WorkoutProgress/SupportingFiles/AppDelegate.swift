@@ -14,21 +14,21 @@ import UserNotifications
 
 let kAppDelegate = UIApplication.shared.delegate as! AppDelegate
 
-//@UIApplicationMain
+@UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var appSettings = AppSettings()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        UNUserNotificationCenter.current().delegate = self
+//        UNUserNotificationCenter.current().delegate = self
         
         _ = persistentContainer
         
         // Check whether DB is migrated or not.
-//        if !appSettings.isDBLocationMigrated {
-//            migrateCoreData()
-//        }
+        if !appSettings.isDBLocationMigrated {
+            migrateCoreData()
+        }
 //
 //        Helper.createDefaultWorkouts()
 
@@ -60,11 +60,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
          */
         let container = NSPersistentContainer(name: "WorkoutProgress")
         
-//        if appSettings.isDBLocationMigrated {
-//            let newStoreURL = AppGroup.group.containerURL.appendingPathComponent("BodyProgress.sqlite")
-//            let description = NSPersistentStoreDescription(url: newStoreURL)
-//            container.persistentStoreDescriptions = [description]
-//        }
+        if appSettings.isDBLocationMigrated {
+            let newStoreURL = AppGroup.group.containerURL.appendingPathComponent("WorkoutProgress.sqlite")
+            let description = NSPersistentStoreDescription(url: newStoreURL)
+            container.persistentStoreDescriptions = [description]
+        }
         
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
@@ -107,7 +107,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     /**Migrate the core data from app to shared app group*/
     func migrateCoreData() {
         let oldStoreURL = NSPersistentContainer.defaultDirectoryURL().appendingPathComponent("WorkoutProgress.sqlite")
-        let newStoreURL = AppGroup.group.containerURL.appendingPathComponent("BodyProgress.sqlite")
+        let newStoreURL = AppGroup.group.containerURL.appendingPathComponent("WorkoutProgress.sqlite")
 
         let coordinator = persistentContainer.persistentStoreCoordinator
         if let oldStore = coordinator.persistentStore(for: oldStoreURL) {
@@ -160,11 +160,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
 // MARK: - UNUserNotificationCenterDelegate methods
-
-extension AppDelegate: UNUserNotificationCenterDelegate {
-    
-    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        completionHandler([.sound, .badge, .alert])
-    }
-    
-}
+//
+//extension AppDelegate: UNUserNotificationCenterDelegate {
+//    
+//    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+//        completionHandler([.sound, .badge, .alert])
+//    }
+//    
+//}

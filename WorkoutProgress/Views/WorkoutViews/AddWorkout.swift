@@ -41,9 +41,9 @@ struct AddWorkout: View {
                     }
                 }
             }
-//            .onAppear {
-//                kAppDelegate.addSeparatorLineAppearance()
-//            }
+            .onAppear {
+                kAppDelegate.addSeparatorLineAppearance()
+            }
             .navigationBarTitle(Text(workoutToEdit == nil ? "kScreenTitleNewWorkout" : "kScreenTitleEditWorkout"), displayMode: .inline)
             .navigationBarItems(
                 trailing: Button(action: { self.validateData() }) { CustomBarButton(title: NSLocalizedString("kButtonTitleSave", comment: "Button title")).environmentObject(appSettings)

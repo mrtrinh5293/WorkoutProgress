@@ -31,6 +31,10 @@ struct ContentView: View {
                 Text("Settings")
             }.tag(2)
         }
+        .onAppear(perform: {
+            kAppDelegate.configureAppearances(color: AppThemeColours.allCases[self.appSettings.themeColorIndex].uiColor())
+        })
+        .accentColor(appSettings.themeColorView())
     }
 }
 

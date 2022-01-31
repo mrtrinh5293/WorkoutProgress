@@ -45,12 +45,40 @@ struct WorkoutsList: View {
                                     .environment(\.managedObjectContext, self.managedObjectContext)
                                     .environmentObject(self.appSettings)
                             }
+//                            .onDelete { (indexSet) in
+//                                if let index = indexSet.first, index < filteredWorkouts.count {
+//                                    let filteredWorkout = filteredWorkouts[index]
+//                                    if let i = workouts.firstIndex(where: { $0.wId == filteredWorkout.wId }) {
+//
+//                                        self.deleteIndex = i
+//                                        self.shouldShowDeleteConfirmation.toggle()
+//                                    }
+//                                }
+//                            }
                             .onDelete { (indexSet) in
-                                <#code#>
+                                if let index = indexSet.first, index < filteredWorkouts.count {
+                                    self.deleteWorkout(workout: self.workouts[index])
+                                }
                             }
                         }
                     }
                 }
+            }
+            .listStyle(InsetGroupedListStyle())
+        }
+        .onAppear {
+            kAppDelegate.removeSeparatorLineAppearance()
+        }
+    }
+    
+    /**Deletes the workout*/
+    func deleteWorkout(workout: Workout) {
+        managedObjectContext.delete(workout)
+        if managedObjectContext.hasChanges {
+            do {
+                try managedObjectContext.save()
+            } catch {
+                print(error)
             }
         }
     }
