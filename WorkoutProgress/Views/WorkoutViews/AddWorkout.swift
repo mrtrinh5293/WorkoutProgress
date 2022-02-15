@@ -51,6 +51,10 @@ struct AddWorkout: View {
         }
     }
     
+    func dismissView() {
+        self.shouldPresentAddNewWorkout = false
+    }
+    
     func validateData() {
         name = name.trimmingCharacters(in: .whitespacesAndNewlines)
         notes = notes.trimmingCharacters(in: .whitespacesAndNewlines)
@@ -81,7 +85,7 @@ struct AddWorkout: View {
         if managedObjectContext.hasChanges {
             do {
                 try managedObjectContext.save()
-                self.shouldShowValidationAlert = false
+                dismissView()
             } catch {
                 print(error)
             }

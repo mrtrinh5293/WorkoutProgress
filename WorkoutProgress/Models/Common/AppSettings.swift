@@ -36,7 +36,6 @@ class AppSettings: ObservableObject {
         self.themeColorIndex = UserDefaults.standard.value(forKey: "themeColorIndex") as? Int ?? 0
         self.selectedTabs = UserDefaults.standard.value(forKey: "selectedTab") as? Int ?? 0
         self.userName = UserDefaults.standard.value(forKey: "userName") as? String ?? "username"
-        self.idDBLocationMigrated = UserDefaults.standard.value(forKey: "isDBLocationMigrated") as? Bool ?? false
         self.isDBLocationMigrated = UserDefaults.standard.value(forKey: "isDBLocationMigrated") as? Bool ?? false
     }
     
@@ -57,12 +56,6 @@ class AppSettings: ObservableObject {
     @Published var userName: String {
         didSet {
             UserDefaults.standard.set(userName, forKey: "userName")
-        }
-    }
-    
-    var idDBLocationMigrated: Bool {
-        didSet {
-            UserDefaults.standard.set(idDBLocationMigrated, forKey: "idDBLocationMigrated")
         }
     }
     

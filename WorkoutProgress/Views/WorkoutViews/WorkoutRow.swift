@@ -16,35 +16,39 @@ struct WorkoutRow: View {
     @State private var shouldPresentEditWorkout: Bool = false
     
     var body: some View {
-        NavigationLink(destination: ExerciseList()) {
-            VStack(alignment: .leading, spacing: 7) {
-                HStack {
-                    Text(workout.wName)
-                        .font(kPrimaryBodyFont)
-                        .fontWeight(.bold)
-                        .lineLimit(2)
-                    
-                    if workout.wIsFavourite {
-                        Image(systemName: "star.fill")
-                            .font(kPrimarySubheadlineFont)
-                            .foregroundColor(.yellow)
-                    }
-                }
-                .sheet(isPresented: $shouldPresentEditWorkout) {
-                    Text("Add Workout")
-                }
-                
-                if workout.wExercises.count > 0 {
+        NavigationLink(destination: ExerciseList(selectedWorkout: workout)) {
+            HStack(spacing: 0) {
+                VStack(alignment: .leading, spacing: 7) {
                     HStack {
-                        Text("Exercise:")
-                        Text("\(workout.wExercises.count)")
+                        Text(workout.wName)
+                            .font(kPrimaryBodyFont)
+                            .fontWeight(.bold)
+                            .lineLimit(2)
+                        
+                        if workout.wIsFavourite {
+                            Image(systemName: "star.fill")
+                                .font(kPrimarySubheadlineFont)
+                                .foregroundColor(.yellow)
+                        }
                     }
-                    .font(kPrimarySubheadlineFont)
-                    .foregroundColor(.secondary)
+                    .sheet(isPresented: $shouldPresentEditWorkout) {
+                        Text("Add Workout")
+                    }
+                    
+                    if workout.wExercises.count > 0 {
+                        HStack {
+                            Text("Exercise:")
+                            Text("\(workout.wExercises.count)")
+                        }
+                        .font(kPrimarySubheadlineFont)
+                        .foregroundColor(.secondary)
+                    }
                 }
                 Spacer()
                 // MARK: Start workout View
                 //
+                
+                StartWorkoutView(workout: workout).environment(\.managedObjectContext, managedObjectContext).environmentObject(appSettings)
             }
             .padding([.vertical], 10)
             .contextMenu {
@@ -63,8 +67,8 @@ struct WorkoutRow: View {
                     Image(systemName: workout.wIsFavourite ? "star.fill" : "star")
                     Text(workout.wIsFavourite ? "kButtonTitleUnfavourite" : "kButtonTitleFavourite")
                 }
-
-
+                
+                
             }
         }
     }
@@ -80,11 +84,23 @@ struct WorkoutRow: View {
             }
         }
     }
+    
+    /**Deletes the workout*/
+    func deleteWorkout(workout: Workout) {
+        managedObjectContext.delete(workout)
+        if managedObjectContext.hasChanges {
+            do {
+                try managedObjectContext.save()
+            } catch {
+                print(error)
+            }
+        }
+    }
 }
 
 struct WorkoutRow_Previews: PreviewProvider {
     static var previews: some View {
-        var wk = Workout()
+        let wk = Workout()
         WorkoutRow(workout: wk)
     }
 }
