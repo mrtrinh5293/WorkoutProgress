@@ -113,7 +113,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if let oldStore = coordinator.persistentStore(for: oldStoreURL) {
             do {
                 try coordinator.migratePersistentStore(oldStore, to: newStoreURL, options: nil, withType: NSSQLiteStoreType)
-                appSettings.idDBLocationMigrated.toggle()
+                appSettings.isDBLocationMigrated.toggle()
             } catch {
                 print(error)
             }

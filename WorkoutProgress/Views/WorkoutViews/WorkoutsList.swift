@@ -45,21 +45,21 @@ struct WorkoutsList: View {
                                     .environment(\.managedObjectContext, self.managedObjectContext)
                                     .environmentObject(self.appSettings)
                             }
-//                            .onDelete { (indexSet) in
-//                                if let index = indexSet.first, index < filteredWorkouts.count {
-//                                    let filteredWorkout = filteredWorkouts[index]
-//                                    if let i = workouts.firstIndex(where: { $0.wId == filteredWorkout.wId }) {
-//
-//                                        self.deleteIndex = i
-//                                        self.shouldShowDeleteConfirmation.toggle()
-//                                    }
-//                                }
-//                            }
                             .onDelete { (indexSet) in
                                 if let index = indexSet.first, index < filteredWorkouts.count {
-                                    self.deleteWorkout(workout: self.workouts[index])
+                                    let filteredWorkout = filteredWorkouts[index]
+                                    if let i = workouts.firstIndex(where: { $0.wId == filteredWorkout.wId }) {
+
+                                        self.deleteIndex = i
+                                        self.shouldShowDeleteConfirmation.toggle()
+                                    }
                                 }
                             }
+//                            .onDelete { (indexSet) in
+//                                if let index = indexSet.first, index < filteredWorkouts.count {
+//                                    self.deleteWorkout(workout: self.workouts[index])
+//                                }
+//                            }
                         }
                     }
                 }
@@ -68,6 +68,15 @@ struct WorkoutsList: View {
         }
         .onAppear {
             kAppDelegate.removeSeparatorLineAppearance()
+        }
+        .alert(isPresented: $shouldShowDeleteConfirmation) { () -> Alert in
+            Alert(title: Text("kAlertTitleConfirm"), message: Text("kAlertMsgDeleteWorkout"), primaryButton: .cancel(), secondaryButton: .destructive(Text("kButtonTitleDelete"), action: {
+                withAnimation {
+                    if self.deleteIndex != kCommonListIndex {
+                        self.deleteWorkout(workout: self.workouts[self.deleteIndex])
+                    }
+                }
+            }))
         }
     }
     

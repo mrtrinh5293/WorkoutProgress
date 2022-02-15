@@ -7,27 +7,27 @@
 */
 
 // Screen titles
-"kScreenTitleNewWorkout" = "New Workout";
-"kScreenTitleEditWorkout" = "Edit Workout";
-"kScreenTitleNewExercise" = "New Exercise";
-"kScreenTitleEditExercise" = "Edit Exercise";
-"kScreenTitleNewSet" = "New Set";
-"kScreenTitleEditSet" = "Edit Set";
+"kScreenTitleNewWorkout" = "Thêm Workout";
+"kScreenTitleEditWorkout" = "Sửa Workout";
+"kScreenTitleNewExercise" = "Thêm Hoạt Động"; // Exercise
+"kScreenTitleEditExercise" = "Sửa Hoạt Động";
+"kScreenTitleNewSet" = "New Bộ"; // Set
+"kScreenTitleEditSet" = "Edit Bộ";
 "kScreenTitleWorkouts" = "Workouts";
-"kScreenTitleExercises" = "Exercises";
-"kScreenTitleExerciseSets" = "Sets";
+"kScreenTitleExercises" = "Hoạt Động ";
+"kScreenTitleExerciseSets" = "Bộ";
 
 // Alert titles
 "kAlertTitleError" = "Error";
 "kAlertTitleConfirm" = "Confirm";
 
 // Alert messages
-"kAlertMsgWorkoutNameRequired" = "Workout name is required";
-"kAlertMsgExerciseNameRequired" = "Exercise name is required";
+"kAlertMsgWorkoutNameRequired" = "Cần Tên Workout";
+"kAlertMsgExerciseNameRequired" = "Cần Tên Exercise";
 "kAlertMsgExerciseSetNameRequired" = "Set name is required";
 "kAlertMsgRefLinkRequired" = "Enter valid reference link";
 "kAlertMsgDeleteWorkout" = "Are you sure to delete the workout?\n\nNote: All exercises and sets will be deleted with the workout";
-"kAlertMsgDeleteExercise" = "Are you sure to delete the exercise?\n\nNote: All sets will be deleted with the exercise";
+"kAlertMsgDeleteExercise" = "Bạn muốn xoá bài tập này?\n\nNote: All sets will be deleted with the exercise";
 "kAlertMsgDeleteExerciseSet" = "Are you sure to delete the exercise set?";
 "kAlertMsgDeleteWorkoutHistory" = "Are you sure to delete the workout history?";
 "kAlertMsgDeleteReferenceLink" = "Are you sure to delete the reference link?";
@@ -35,20 +35,22 @@
 
 // Buttons
 "kButtonTitleOkay" = "Okay";
-"kButtonTitleSave" = "Save";
-"kButtonTitleStart" = "Start";
-"kButtonTitleCancel" = "Cancel";
-"kButtonTitleEdit" = "Edit";
-"kButtonTitleDelete" = "Delete";
-"kButtonTitleUnfavourite" = "Unfavourite";
-"kButtonTitleFavourite" = "Favourite";
-"kButtonTitleDone" = "Done";
+"kButtonTitleSave" = "Lưu";
+"kButtonTitleStart" = "Bắt Đầu";
+"kButtonTitleCancel" = "Bỏ Qua";
+"kButtonTitleEdit" = "Sửa";
+"kButtonTitleDelete" = "Xoá";
+"kButtonTitleUnfavourite" = "Bỏ Thích";
+"kButtonTitleFavourite" = "Yêu Thích";
+"kButtonTitleDone" = "Xong";
 "kButtonTitleReferences" = "References";
+"kButtonReadyToStart" = "Bắt Đầu";
+"kButtonStartWorkout" = "Bắt Đầu Bài Tập";
 
 // Header titles
-"kHeaderName" = "Name";
-"kHeaderNotes" = "Notes";
-"kHeaderChooseBodyPart" = "Choose body part";
+"kHeaderName" = "Tên";
+"kHeaderNotes" = "Ghi Chú";
+"kHeaderChooseBodyPart" = "Chọn bộ phận";
 
 // Placeholders
 "kPlaceholderEnterHere" = "Enter here";
@@ -66,3 +68,5 @@
 
 // Preview messages
 "kPreviewYtb" = "The preview yet to be configured";
+
+// Body Part
